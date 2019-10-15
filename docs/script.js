@@ -11,7 +11,7 @@ const sampleCollection = [
   {
     title: 'buttons',
     showCode: false,
-    code: `<a class="nes-btn">Normal</a>
+    code: `<a class="nes-btn" href="#">Normal</a>
 
 <button type="button" class="nes-btn is-primary">Primary</button>
 <button type="button" class="nes-btn is-success">Success</button>
@@ -80,6 +80,11 @@ const sampleCollection = [
 <div class="nes-field is-inline">
   <label for="error_field">.input.is-error</label>
   <input type="text" id="error_field" class="nes-input is-error" placeholder="awesome.css">
+</div>
+
+<div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+  <label for="dark_field" style="color:#fff;">.input.is-dark</label>
+  <input type="text" id="dark_field" class="nes-input is-dark" placeholder="dark.css">
 </div>`,
   },
   {
@@ -125,6 +130,17 @@ const sampleCollection = [
     <option value="0">To be</option>
     <option value="1">Not to be</option>
   </select>
+</div>
+
+<div style="background-color:#212529; padding: 1rem 1.2rem 1rem 1rem;width:calc(100% + 8px)">
+  <label for="dark_select" style="color:#fff">nes-select.is-dark</label>
+  <div class="nes-select is-dark">
+    <select required id="dark_select">
+      <option value="" disabled selected hidden>Select...</option>
+      <option value="0">To be</option>
+      <option value="1">Not to be</option>
+    </select>
+  </div>
 </div>`,
   },
   {
@@ -342,6 +358,13 @@ const sampleCollection = [
 </section>`,
   },
   {
+    title: 'cursor',
+    showCode: false,
+    code: `<p class="nes-balloon from-left nes-pointer">
+  This is not a clickable element, but it's an area of the pointer.
+</p>`
+  },
+  {
     title: 'badges',
     showCode: false,
     code: `<a href="#" class="nes-badge">
@@ -526,48 +549,52 @@ const emeriti = [
     name: 'Abdullah Samman',
     feat: 'Setup test suite',
     github: 'evexoio',
-    twitter: 'evexoio',
   },
 ];
 
-// https://api.github.com/repos/nostalgic-css/NES.css/contributors?per_page=100 | jq . '.[].login'
+// curl -s 'https://api.github.com/repos/nostalgic-css/NES.css/contributors?per_page=100' | jq '.[].login'
 const contributors = [
   '4k1k0',
   'sombreroEnPuntas',
   'Divoolej',
   'soph-iest',
-  'KeevanDance',
   'montezume',
   'sazzadsazib',
-  'jjspace',
-  'ohlookitsderpy',
   'jdvivar',
-  'Ilyeo',
-  'youngkaneda',
-  'kenshinji',
-  'Kartones',
+  'ohlookitsderpy',
   'IngwiePhoenix',
-  'Takumi0901',
+  'kyu-suke',
+  'jjspace',
   'Baldomo',
-  'ernestomancebo',
-  'stewartrule',
   'DanSnow',
+  'ernestomancebo',
+  'Ilyeo',
+  'Kartones',
   'rrj-dev',
   'vicainelli',
+  'stewartrule',
+  'kenshinji',
+  'youngkaneda',
+  'Takumi0901',
+  'loo41',
+  'alexd99',
+  'alexgleason',
+  'agarzola',
+  'Ermakoy',
+  'fleeting',
+  'JamesIves',
+  'jsoref',
+  'KOREAN139',
+  'LukBukkit',
+  'otaviopace',
+  'Pedro-Souza',
+  'iamrameffort',
+  'scottaohara',
+  'd0p1s4m4',
+  'lucasjs',
+  'musavvirahmed',
   'sinofp',
   'tnantoka',
-  'LukBukkit',
-  'd0p1s4m4',
-  'musavvirahmed',
-  'KOREAN139',
-  'loo41',
-  'otaviopace',
-  'alexgleason',
-  'fleeting',
-  'scottaohara',
-  'JamesIves',
-  'agarzola',
-  'jsoref',
 ];
 
 new Vue({
@@ -605,22 +632,6 @@ new Vue({
     this.replaceImages();
   },
   methods: {
-    share(media) {
-      const url = (() => {
-        switch (media) {
-          case 'twitter':
-            return 'https://twitter.com/share?text=NES.css%EF%BD%9CNES-style%20CSS%20Framework%20%40bc_rikko&url=https://nostalgic-css.github.io/NES.css/';
-          case 'facebook':
-            return 'https://www.facebook.com/sharer.php?u=https://nostalgic-css.github.io/NES.css/&t=NES.css%EF%BD%9CNES-style%20CSS%20Framework';
-          case 'linkedin':
-            return 'https://www.linkedin.com/shareArticle?url=https%3A//nostalgic-css.github.io/NES.css/&title=NES.css%EF%BD%9CNES-style%20CSS%20Framework';
-          case 'github':
-            return 'https://github.com/nostalgic-css/NES.css';
-        }
-      })();
-
-      window.open(url, '');
-    },
     copy(event, id) {
       this.showCopiedBalloon(event.pageY, event.pageX);
 
